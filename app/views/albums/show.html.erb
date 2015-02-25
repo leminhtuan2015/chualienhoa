@@ -1,0 +1,51 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Hình ảnh"%></li>
+  <li>
+    <%= @album.name %>
+  </li>
+</ol>
+
+<% if logged_in? %>
+<div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+          Action
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+          <li role="presentation">
+              <%= link_to "Add photos", new_photo_store_album_photo_path(@album.photo_store, @album) %>
+          </li>
+          <li role="presentation">
+           <%= link_to "Edit.", edit_photo_store_album_path(@album.photo_store, @album) %>
+          </li>
+          <li role="presentation">
+              <%= link_to "Delete.", photo_store_album_path(@album.photo_store, @album),
+                    method: :delete,
+                    data: { confirm: 'Make sure you want to do this?' }%>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+            
+          </li>
+        </ul>
+      </li>
+    </ul> <!-- /pills -->
+  </div>
+<% end %>
+
+<% @photos.each do |photo| %>
+<div class="bs-example" data-example-id="simple-thumbnails">
+    <div class="thumbnail thumbnail_w_h">
+      <%= link_to (image_tag photo.url_url, width: "100%"), photo_store_album_photo_path(@photo_store, @album, photo) %>
+      <div class="caption center">
+        <%= link_to photo.name, photo_store_album_photo_path(@photo_store, @album, photo) %>
+        <%= photo.description %>
+      <div class="small_info_time">
+        <%= photo.created_at.to_date %>
+     </div>
+      </div>
+    </div>
+ </div> 
+<% end %>

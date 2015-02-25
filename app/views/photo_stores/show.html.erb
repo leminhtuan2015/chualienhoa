@@ -1,0 +1,57 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Hình ảnh"%></li>
+  <li>
+    <%= @photo_store.name%>
+  </li>
+</ol>
+
+<% if logged_in? %>
+<div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+          Action
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+          <li role="presentation">
+              <%= link_to "Add Album",  new_photo_store_album_path(@photo_store) %>
+          </li>
+          <li role="presentation">
+            <%= link_to "Edit",  edit_photo_store_path(@photo_store)%>
+          </li>
+          <li role="presentation">
+              <%= link_to "Delete", photo_store_path(@photo_store),
+                    method: :delete,
+                    data: { confirm: 'Make sure you want to do this?' }%>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+            
+          </li>
+        </ul>
+      </li>
+    </ul> <!-- /pills -->
+  </div>
+<% end %>
+
+<% @albums.each do |album| %>
+<div class="bs-example" data-example-id="simple-thumbnails">
+    <div class="thumbnail_w_h thumbnail">
+      <div class="caption center">
+        <% if album.photos.first != nil %>
+            <%= link_to (image_tag album.photos.first.url_url), photo_store_album_path(@photo_store, album)%>
+        <% else %>
+          <%= link_to (image_tag "http://res.cloudinary.com/buddhism/image/upload/v1425021711/Gallery_jfl2o9.jpg"), photo_store_album_path(@photo_store, album)%>
+        <% end %>
+        <div class="caption">
+        <%= link_to album.name, photo_store_album_path(@photo_store, album) %>
+        <%= album.description %>
+        </div>
+        <div class="small_info_time">
+        <%= album.created_at.to_date %>
+       </div>
+      </div>
+    </div>
+ </div> 
+<% end %>

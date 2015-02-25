@@ -1,0 +1,56 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Kinh"%></li>
+  <li>
+    <%= @book_store.name%>
+  </li>
+</ol>
+
+<% if logged_in? %>
+<div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+          Action
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+          <li role="presentation">
+            <%= link_to "Add books",  new_book_store_book_path(@book_store)%>
+          </li>
+          <li role="presentation">
+          	<%= link_to "Edit",  edit_book_store_path(@book_store)%>
+          </li>
+          <li role="presentation">
+          	  <%= link_to "Delete", book_store_path(@book_store),
+                    method: :delete,
+                    data: { confirm: 'Make sure you want to do this?' }%>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+          	
+          </li>
+        </ul>
+      </li>
+    </ul> <!-- /pills -->
+  </div>
+<% end %>
+
+<% @book_store.books.each do |book| %>
+<% if !book.image_link.empty? %>
+<% @image = book.image_link %>
+<% else %>
+<% @image = book.image_upload.url %>
+<% end %>
+<div class="bs-example" data-example-id="simple-thumbnails">
+    <div class="thumbnail thumbnail_w_h">
+      <%= link_to (image_tag @image), book_store_book_path(book.book_store, book) %>
+      <div class="caption">
+        <%= link_to book.name, book_store_book_path(book.book_store, book) %>
+        <div class="small_info_time">
+         <%= book.created_at.to_date %>
+     </div>
+        <h6><%= book.description %></h6>
+      </div>
+    </div>
+ </div> 
+<% end %>

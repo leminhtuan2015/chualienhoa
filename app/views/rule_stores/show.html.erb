@@ -1,0 +1,55 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Luật"%></li>
+  <li>
+    <%= @rule_store.name%>
+  </li>
+</ol>
+<% if logged_in? %>
+<div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+          Action
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+          <li role="presentation">
+              <%= link_to "Add rules",  new_rule_store_rule_path(@rule_store) %>
+          </li>
+          <li role="presentation">
+            <%= link_to "Edit",  edit_rule_store_path(@rule_store)%>
+          </li>
+          <li role="presentation">
+          	  <%= link_to "Delete", rule_store_path(@rule_store),
+                    method: :delete,
+                    data: { confirm: 'Make sure you want to do this?' }%>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+          	
+          </li>
+        </ul>
+      </li>
+    </ul> <!-- /pills -->
+  </div>
+<% end %>
+<% @rules.each do |rule| %>
+<% if !rule.image_link.to_s.empty? %>
+<% @image = rule.image_link %>
+<% else %>
+<% @image = rule.image_upload.url %>
+<% end %>
+<div class="bs-example" data-example-id="simple-thumbnails">
+    <div class="thumbnail thumbnail_w_h">
+      <%= link_to (image_tag @image), rule_store_rule_path(rule.rule_store, rule) %>
+      <div class="caption">
+        <%= link_to rule.name, rule_store_rule_path(rule.rule_store, rule) %>
+
+        <h6><%= rule.description %></h6>
+        <div class="small_info_time">
+          <%= rule.created_at.to_date %>
+        </div>
+      </div>
+    </div>
+ </div> 
+<% end %>
