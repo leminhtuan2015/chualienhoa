@@ -1,0 +1,22 @@
+<% if !info.image_link.empty? %>
+<% @image = info.image_link %>
+<% else %>
+<% @image = info.image_upload.url %>
+<% end %>
+<div class="thumbnail thumbnail_w_h_news_container " data-example-id="simple-thumbnails">
+        <div class="thumbnail thumbnail_w_h_news">
+          <%= link_to (image_tag @image), info_path(info) %>
+        </div>
+        <div class="caption">
+            <%= link_to info.name, info_path(info)%>
+        </div>
+        <p >
+            <%= info.content.truncate_words(200).html_safe%>
+            <%= link_to "Chi tiết", info_path(info), class: "news_detail"%>
+        </p>
+        <div class="small_info_time">
+         <%= info.created_at.to_date %>
+        </div>
+
+  </div>
+
