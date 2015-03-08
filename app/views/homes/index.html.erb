@@ -31,12 +31,23 @@
   </div>
 <% end %>
 
-<div class="col-xs-10 col-md-8">
-<div class="jumbotron jumbotron_clip bg_white_color vertical-center">
-<div class="center"><a><i>Lời ngỏ</i></a></div>
+<div class="container">
+<div class="jumbotron bg_white_color">
+<div class="center"><i>Lời ngỏ</i></div>
 <% if Home.first != nil%>
 <%= Home.first.content.html_safe %>
 <% end %>
 </div>
+</div>
+
+
+<div class="center">
+<iframe
+  width="800"
+  height="300"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD2iSicqoS5gz5ocqBqtXR8LadBeyg45fE
+    &q=Cao Xá+Trung Tú+Hà Nội+Vietnam">
+</iframe>
 </div>
 

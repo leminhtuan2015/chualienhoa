@@ -1,6 +1,6 @@
 class InfosController < ApplicationController
   def index
-    @infos = Info.order('id DESC')
+    @infos = Info.order('created_at DESC').paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -23,6 +23,7 @@ class InfosController < ApplicationController
   end
 
   def show
+    @infos = Info.order('created_at DESC')
     @info = Info.find params[:id]
   end
 

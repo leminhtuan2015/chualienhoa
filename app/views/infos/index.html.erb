@@ -22,7 +22,7 @@
 
 <div class="breadcrumb_retative">
 <ol class="breadcrumb breadcrumb_retative bg_breadcrumb">
-  <li><%= link_to "Bài liên quan"%></li>
+  <li class="referent">Bài liên quan</li>
   </ol>
 <div class=" bg_white_color breadcrumb_retative">
 <% @infos.sample(10).each do |info| %>
@@ -39,4 +39,13 @@
 </div>
 </div>
 
-<%= render Info.order('created_at DESC') %>
+<%= render  @infos, cache: true %>
+  <%#= render text: "123" %>
+
+<a href="#top" id ="backToTopBtn">
+  <img src="/assets/top.png" width="50px"></img>
+</a>
+
+<div class="thumbnail thumbnail_w_h_news_container center" data-example-id="simple-thumbnails">
+    <%= will_paginate @infos%>
+</div>

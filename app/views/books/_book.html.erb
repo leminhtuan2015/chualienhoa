@@ -10,7 +10,7 @@
         <div class="caption">
             <%= link_to book.name, book_store_book_path(book.book_store, book)%>
         </div>
-        <div >
+        <div class="truncate">
         <p >
             <%= book.content.truncate_words(200).html_safe%>
             <%= link_to "Chi tiết", book_store_book_path(book.book_store, book), class: "news_detail"%>

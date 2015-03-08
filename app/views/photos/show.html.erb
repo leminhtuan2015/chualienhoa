@@ -44,6 +44,8 @@
          </div>
       </div>
       
+      <a href="https://twitter.com/share" class="twitter-share-button">Tweet
+      </a>
       <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 
     <nav>
@@ -73,7 +75,7 @@
 
 <div class="breadcrumb_retative">
 <ol class="breadcrumb breadcrumb_retative bg_breadcrumb">
-  <li><%= link_to "Album liên quan"%></li>
+  <li class="referent">Album liên quan</li>
   </ol>
 <div class=" bg_white_color breadcrumb_retative">
 <% @photo.album.photo_store.albums.sample(10).each do |album| %>

@@ -48,15 +48,17 @@
     <div class="small_info_time">
      <%= @lecture.created_at.to_date %>
        </div>
-
-      <div class="fb-like" data-href=<%= request.original_url %> data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+      <a href="https://twitter.com/share" class="twitter-share-button">Tweet
+      </a>
+      <div class="fb-like" data-href=<%= request.original_url %> data-layout="standard" data-action="like" data-show-faces="true" data-share="true">
+      </div>
 
     </div>
  </div>
 
 <div class="breadcrumb_lecture_retative">
 <ol class="breadcrumb breadcrumb_lecture_retative bg_breadcrumb" >
-  <li><%= link_to "Bài liên quan"%></li>
+  <li class="referent">Bài liên quan</li>
   </ol>
 <div>
 <% @lecture.lecture_store.lectures.sample(5).each do |lecture| %>

@@ -12,11 +12,9 @@ Rails.application.routes.draw do
 
   resources :banners
 
-  resources :users do
-  end
+  resources :users
 
-  resources :infos do
-  end
+  resources :infos
 
   resources :article_stores do
     resources :articles

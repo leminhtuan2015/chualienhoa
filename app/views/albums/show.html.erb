@@ -42,5 +42,11 @@
 <%= render @photos %>
 
 <div class="thumbnail thumbnail_w_h_news_container" data-example-id="simple-thumbnails">
+<a href="#top" id ="backToTopBtn">
+  <img src="/assets/top.png" width="50px"></img>
+</a>
+</div>
+
+<div class="thumbnail thumbnail_w_h_news_container center" data-example-id="simple-thumbnails">
     <%= will_paginate @photos %>
 </div>

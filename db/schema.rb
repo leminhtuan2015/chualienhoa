@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20150308025005) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.integer  "photo_store_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
@@ -25,19 +25,19 @@ ActiveRecord::Schema.define(version: 20150308025005) do
 
   create_table "article_stores", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "articles", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.string   "author"
     t.string   "translator"
-    t.string   "image_link"
+    t.text     "image_link"
     t.string   "image_upload"
-    t.string   "content"
+    t.text     "content"
     t.integer  "article_store_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -53,19 +53,19 @@ ActiveRecord::Schema.define(version: 20150308025005) do
 
   create_table "book_stores", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "books", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.string   "author"
     t.string   "translator"
-    t.string   "image_link"
+    t.text     "image_link"
     t.string   "image_upload"
-    t.string   "content"
+    t.text     "content"
     t.integer  "book_store_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20150308025005) do
   add_index "books", ["book_store_id"], name: "index_books_on_book_store_id"
 
   create_table "homes", force: :cascade do |t|
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20150308025005) do
     t.string   "place"
     t.text     "content"
     t.text     "image_link"
-    t.string   "image_upload"
+    t.text     "image_upload"
     t.text     "description"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -93,15 +93,15 @@ ActiveRecord::Schema.define(version: 20150308025005) do
 
   create_table "lecture_stores", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "lectures", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
-    t.string   "url"
+    t.text     "description"
+    t.text     "url"
     t.string   "author"
     t.integer  "lecture_store_id"
     t.datetime "created_at",       null: false
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 20150308025005) do
     t.integer  "book_id"
     t.integer  "rule_id"
     t.integer  "lecture_id"
-    t.integer  "news_id"
+    t.integer  "info_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
@@ -125,22 +125,10 @@ ActiveRecord::Schema.define(version: 20150308025005) do
   add_index "newfeeds", ["album_id"], name: "index_newfeeds_on_album_id"
   add_index "newfeeds", ["article_id"], name: "index_newfeeds_on_article_id"
   add_index "newfeeds", ["book_id"], name: "index_newfeeds_on_book_id"
+  add_index "newfeeds", ["info_id"], name: "index_newfeeds_on_info_id"
   add_index "newfeeds", ["lecture_id"], name: "index_newfeeds_on_lecture_id"
-  add_index "newfeeds", ["news_id"], name: "index_newfeeds_on_news_id"
   add_index "newfeeds", ["other_item_detail_id"], name: "index_newfeeds_on_other_item_detail_id"
   add_index "newfeeds", ["rule_id"], name: "index_newfeeds_on_rule_id"
-
-  create_table "news", force: :cascade do |t|
-    t.string   "name"
-    t.string   "during"
-    t.string   "place"
-    t.string   "content"
-    t.string   "image_link"
-    t.string   "image_upload"
-    t.string   "description"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
 
   create_table "other_item_details", force: :cascade do |t|
     t.string   "name"
@@ -150,15 +138,15 @@ ActiveRecord::Schema.define(version: 20150308025005) do
     t.string   "translator"
     t.string   "during"
     t.string   "place"
-    t.string   "content"
-    t.string   "image_link"
+    t.text     "content"
+    t.text     "image_link"
     t.string   "image_upload"
-    t.string   "url"
-    t.string   "description"
+    t.text     "url"
+    t.text     "description"
     t.string   "status"
     t.string   "view"
     t.string   "show"
-    t.string   "params"
+    t.text     "params"
     t.integer  "other_item_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -183,15 +171,15 @@ ActiveRecord::Schema.define(version: 20150308025005) do
 
   create_table "photo_stores", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "photos", force: :cascade do |t|
     t.string   "name"
-    t.string   "url"
-    t.string   "description"
+    t.text     "url"
+    t.text     "description"
     t.integer  "album_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -201,19 +189,19 @@ ActiveRecord::Schema.define(version: 20150308025005) do
 
   create_table "rule_stores", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "rules", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.string   "author"
     t.string   "translator"
-    t.string   "image_link"
+    t.text     "image_link"
     t.string   "image_upload"
-    t.string   "content"
+    t.text     "content"
     t.integer  "rule_store_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

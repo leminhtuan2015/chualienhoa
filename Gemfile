@@ -22,6 +22,7 @@ gem 'nicescroll-rails', '~> 3.5.4.1'
 gem 'fancybox2-rails', '~> 0.2.8'
 gem 'mysql2'
 gem 'rails_12factor'
+gem 'multi_fetch_fragments'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

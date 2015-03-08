@@ -46,6 +46,10 @@ html {
   font-weight: 1000;
 }
 
+.referent{
+   color:#FFFFFF;
+}
+
 .small_info_time{
   color:#7F7777;
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
@@ -102,11 +106,18 @@ html {
 
 .title_show{
   color:#267AC7;
-  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 16px;
+  font-family: "Times New Roman", Georgia, Serif;
+  font-size: 20px;
   font-style: normal;
   font-variant: normal;
   font-weight:bold;
+}
+
+.truncate{
+  font-family: "Times New Roman", Georgia, Serif;
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
 }
 
 .breadcrumb {background: rgba(255, 255, 255, 1); 
@@ -118,6 +129,8 @@ border: 0px solid rgba(245, 245, 245, 1); border-radius: 4px; display: block;}
 .breadcrumb>li+li:before {color: rgba(133, 153, 230, 1); content: "\276D\00a0";}
 
 .jumbotron_clip{
+  font-family: "Times New Roman", Georgia, Serif;
+  font-size: 18px;
   width: 700px;
   float: left;
 }

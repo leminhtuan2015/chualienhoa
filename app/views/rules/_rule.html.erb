@@ -10,7 +10,7 @@
         <div class="caption">
             <%= link_to rule.name, rule_store_rule_path(rule.rule_store, rule)%>
         </div>
-        <div >
+        <div class="truncate">
         <p >
             <%= rule.content.truncate_words(200).html_safe%>
             <%= link_to "Chi tiết", rule_store_rule_path(rule.rule_store, rule), class: "news_detail"%>

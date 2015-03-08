@@ -34,6 +34,8 @@ Buddhism::Application.configure do
 
    config.log_level = :info
 
+   config.assets.compile = true
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
